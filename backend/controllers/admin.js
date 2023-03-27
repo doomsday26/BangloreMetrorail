@@ -2,6 +2,7 @@ const ZoneFares= require('../models/zonefare')
 const PeakhourTiming= require('../models/peakhourTimings')
 
 const PriceCap = require('../models/pricecap')
+const { response } = require('express')
 
 
 exports.submitCapDetails=async (req,res)=>{
@@ -23,7 +24,25 @@ let details =await PriceCap.findAll({ attributes: {
 res.status(200).json(details)
 }
 
-exports.updateCapDetails=async(req,res)=>{}
+exports.updateCapDetails=async(req,res)=>{
+  let id=req.params.id;
+  let prevCap=await PriceCap.findAll({where:{id:id}})
+  prevCap=prevCap[0]
+  console.log(prevCap)
+console.log(req.body)
+let newcap= req.body
+prevCap.originZone=newcap.capzoneA
+prevCap.destinationZone= newcap.capzoneB
+prevCap.dailyCap=+newcap.dailycapCharge
+prevCap.weeklyCap=+newcap.weeklyCapCharge
+let result= await prevCap.save()
+console.log(result)
+res.status(200).json({success:true,message:"updated successfully"})
+
+}
+
+
+
 
 exports.deleetCapDetails = async(req,res)=>{
     console.log(req.params.id)
@@ -34,16 +53,6 @@ exports.deleetCapDetails = async(req,res)=>{
   res.status(200).json({success:true,message:"successfuly deleetd the zonal capping detail"})
 }
 
-
-
-//// zone charge
-
-// {
-//     boardingZone: 'zone1',
-//     destinationZone: 'zone1',
-//     peakCharge: '30',
-//     normalCharge: '25'
-//   }
 
 exports.submitzoneCharge=async (req,res)=>{
     // console.log(req.body)
@@ -64,7 +73,22 @@ let details =await ZoneFares.findAll({ attributes: {
 res.status(200).json(details)
 }
 
-exports.updateZoneCharge=async(req,res)=>{}
+exports.updateZoneCharge=async(req,res)=>{
+  let id = req.params.id
+  let newZoneCharges=req.body
+  let prevZoneCharges= await ZoneFares.findAll({where:{id:id}})
+console.log(prevZoneCharges)
+console.log(newZoneCharges)
+prevZoneCharges=prevZoneCharges[0]
+prevZoneCharges.originZone=newZoneCharges.boardingZone
+prevZoneCharges.destinationZone=newZoneCharges.destinationZone
+prevZoneCharges.PeakHourFare=newZoneCharges.peakCharge
+prevZoneCharges.normalFare=newZoneCharges.normalCharge
+let result= await  prevZoneCharges.save()
+console.log(result)
+res.status(200).json({success:true,message:"updated successfully"})
+  
+}
 
 exports.deleteZoneCharge = async(req,res)=>{
     console.log(req.params.id)
@@ -97,7 +121,21 @@ let details =await PeakhourTiming.findAll({ attributes: {
 res.status(200).json(details)
 }
 
-exports.updatepeakTimings=async(req,res)=>{}
+exports.updatepeakTimings=async(req,res)=>{
+  let id = req.params.id
+  let prevTimings= await PeakhourTiming.findAll({where:{id:id}})
+  prevTimings=prevTimings[0]
+  console.log(prevTimings)
+  console.log(req.body)
+  let newtimings= req.body
+prevTimings.startDay= newtimings.dayA 
+prevTimings.endDay=newtimings.dayB
+prevTimings.startTime=newtimings.timeA
+prevTimings.endTime=newtimings.timeB
+let result=await prevTimings.save()
+res.status(200).json({success:true ,message:"data updated successfully"})
+
+}
 
 exports.deletePeakTimings = async(req,res)=>{
 

@@ -9,20 +9,20 @@ const admincontrollers= require('../controllers/admin')
 Router.post('/capdetails',admincontrollers.submitCapDetails)
 Router.get('/capdetails',admincontrollers.getCapDetails)
 Router.delete('/capdetails/:id',admincontrollers.deleetCapDetails)
-Router.post('/capdetails/:id',admincontrollers.updateCapDetails)
+Router.put('/capdetails/:id',admincontrollers.updateCapDetails)
 
 
 //charge per zone
 Router.post('/zoneCharge',admincontrollers.submitzoneCharge)
 Router.get('/zoneCharge',admincontrollers.getZonecharge)
 Router.delete('/zoneCharge/:id',admincontrollers.deleteZoneCharge)
-Router.post('/zoneCharge/:id',admincontrollers.updateZoneCharge)
+Router.put('/zoneCharge/:id',admincontrollers.updateZoneCharge)
 
 //peak timings
 Router.post('/peakTimings',admincontrollers.submitpeakTimings)
 Router.get('/peakTimings',admincontrollers.getpeakTimings)
 Router.delete('/peakTimings/:id',admincontrollers.deletePeakTimings)
-Router.post('/peakTimings/:id',admincontrollers.updatepeakTimings)
+Router.put('/peakTimings/:id',admincontrollers.updatepeakTimings)
 
 
 module.exports=Router

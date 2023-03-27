@@ -10,6 +10,16 @@
   <body>
     <div id="main">
       <div class="left container">
+        <div style="display: flex; justify-content: space-around;margin-top: 2vh;">
+          <h2>select your theme</h2>
+         
+          <div id="colour" style="display: flex;flex-direction: row;" >
+            <button id="color1" style="background-color: #c76b3c;color: #c76b3c;border: 0;border-bottom-left-radius:1vh ;border-top-left-radius: 1vh; ">____</button>
+            <button id="color3" style="background-color:rgb(203, 84, 84);color:rgb(203, 84, 84);border: 0 ">____</button>
+      
+            <button id="color2" style="background-color: rgb(221 63 63);color: rgb(221 63 63);border: 0;border-bottom-right-radius:1vh ;border-top-right-radius: 1vh;" >____</button>
+          </div>
+        </div>
         <h1>BENGLURU METRO ADMIN PANEL</h1>
         <br />
         <div id="existingFares">
@@ -71,7 +81,7 @@
               <input type="number" name="peakCharge" id="peakCharge" required />
             </div>
             <br />
-          <input type="submit" value="ENTER PRICING" id="submit" />
+          <input type="submit" value="SUBMIT/UPDATE PRICING" id="submit" />
         </form>
 <br>
 <h2>PRICE CAPPING INFORMATION </h2>
@@ -100,7 +110,7 @@
       <input type="number" name="peakCharge" id="weeklyCapCharge" required />
     </div>
     <br />
-  <input type="submit" value="ENTER CAPPING DETAILS" id="submit" />
+  <input type="submit" value="SUBMIT/UPDATE CAPPING DETAILS" id="submit" />
 </form>
 <br>
 <h2>DAY WISE PEAK HOURS</h2>
@@ -147,7 +157,7 @@
               <input type="time" name="peakCharge" id="timeB" required />
             </div>
             <br />
-          <input type="submit" value="Add Timings" id="submit" />
+          <input type="submit" value="SUBMIT/UPDATE Timings" id="submit" />
         </form>
 
 

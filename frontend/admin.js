@@ -1,12 +1,12 @@
 //
-let form = document.getElementById('zoneForm')
+let ZoneChargeform = document.getElementById('zoneForm')
 let boardingZone= document.getElementById('zoneA')
 let destinationZone= document.getElementById('zoneB')
 let peakCharge= document.getElementById('peakCharge')
 let normalCharge= document.getElementById('normalCharge')
 let ul= document.getElementById('fareul')
 ul.addEventListener('click',editDelete)
-form.addEventListener('submit',ZoneCharges)
+ZoneChargeform.addEventListener('submit',submitZoneCharges)
 let peakUl = document.getElementById('peakul');
 peakUl.addEventListener('click',editDelete)
 let capul = document.getElementById('capul');
@@ -19,8 +19,8 @@ let capzoneB= document.getElementById('capzoneB')
 let dailycapCharge=document.getElementById('dailycapCharge')
 let weeklyCapCharge= document.getElementById('weeklyCapCharge')
 //
-let timingForm = document.getElementById('timingForm')
-timingForm.addEventListener('submit',submitPeaktimings)
+let PeaktimingForm = document.getElementById('timingForm')
+PeaktimingForm.addEventListener('submit',submitPeaktimings)
 let dayA= document.getElementById('dayA')
 let dayB= document.getElementById('dayB')
 let timeA=document.getElementById('timeA')
@@ -32,8 +32,24 @@ window.addEventListener('DOMContentLoaded',async()=>{
 })
 let http= 'http://localhost:3000/admin'
 let paramId=0
+let updatePeakParamId=0
 
+let updateParamId=0
+let updateParamIdPriceCap=0
+var style = getComputedStyle(document.body)
+console.log( style.getPropertyValue('--brown') ) // #336699
 
+document.getElementById('color1').addEventListener('click',(e)=>{
+  document.documentElement.style.setProperty('--brown',e.target.style.color ) ;
+})
+document.getElementById('color2').addEventListener('click',(e)=>{
+  document.documentElement.style.setProperty('--brown',e.target.style.color ) ;
+})
+
+document.getElementById('color3').addEventListener('click',(e)=>{
+  document.documentElement.style.setProperty('--brown',e.target.style.color ) ;
+})
+const weekday = [ "Monday","Tuesday",  "Wednesday","Thursday","Friday","Saturday","Sunday"];
 function clearUl(ul){
   while (ul.firstChild)
   ul.removeChild(ul.firstChild);
@@ -83,7 +99,7 @@ timeB.value=''
 await displaypeaktimings()
 }
 
-async function ZoneCharges(e){
+async function submitZoneCharges(e){
     console.log("clicked")
 e.preventDefault();
 let obj={
@@ -182,8 +198,13 @@ else if(ul.id=='peakul'){
         
     }
     else if(e.target.className=='edit'){
-            let li= e.target.parentNode
-            paramId=li.id
+//change eventlistener on submit button to update 
+console.log("edit zone charge clicked")
+ZoneChargeform.removeEventListener('submit',submitZoneCharges)
+ZoneChargeform.addEventListener('submit',updatezoneChargeDetails)
+      //zone fares
+      let li= e.target.parentNode
+      updateParamId=li.id
             boardingZone.value=li.childNodes[0].innerText
             destinationZone.value=li.childNodes[2].innerText
             peakCharge.value=li.childNodes[6].innerText
@@ -191,24 +212,30 @@ else if(ul.id=='peakul'){
     }  
       else if
         (e.target.className=='edit2'){
+          //peak hours
+          let li= e.target.parentNode
+          updatePeakParamId=li.id
+          PeaktimingForm.removeEventListener('submit',submitPeaktimings)
+          PeaktimingForm.addEventListener('submit',updatePeakHourTimings)
             console.log("edit 2 clicked")
-            let li= e.target.parentNode
-            paramId=li.id
-          dayA.value=li.childNodes[0].innerText
-            dayB.value=li.childNodes[2].innerText
-            timeA.value=li.childNodes[6].innerText
-            timeB.value=li.childNodes[4].innerText
+          dayA.value= weekday.indexOf(li.childNodes[0].innerText) +1
+            dayB.value=weekday.indexOf(li.childNodes[2].innerText)+1
+            timeA.value=li.childNodes[4].innerText
+            timeB.value=li.childNodes[6].innerText
     }
 
     else if
     (e.target.className=='edit3'){
+      //price cap
         console.log("edit 3 clicked")
         let li= e.target.parentNode
-        paramId=li.id
+updateParamIdPriceCap=li.id
       capzoneA.value=li.childNodes[0].innerText
         capzoneB.value=li.childNodes[2].innerText
-        dailycapCharge.value=li.childNodes[6].innerText
-        weeklyCapCharge.value=li.childNodes[4].innerText
+        dailycapCharge.value=li.childNodes[4].innerText
+        weeklyCapCharge.value=li.childNodes[6].innerText
+capForm.removeEventListener('submit',submitCap)
+capForm.addEventListener('submit',updatePriceCappingDetails)
 }
 
 }
@@ -250,4 +277,56 @@ endDay=weekday[+e.endDay -1]
    createLi(startDay,endDay,"peak hour start","peak hour end" ,e.startTime,e.endTime,peakUl,"edit2",e.id)
   });
   
+}
+
+
+async function updatezoneChargeDetails (e){
+  e.preventDefault()
+  console.log("etit clicked to update ")
+  let obj={boardingZone:boardingZone.value,destinationZone:destinationZone.value,peakCharge:peakCharge.value,normalCharge:normalCharge.value}
+let result=await axios.put(http+`/zoneCharge/${updateParamId}`,obj)
+console.log(result)
+ZoneChargeform.removeEventListener('submit',updatezoneChargeDetails)
+ZoneChargeform.addEventListener('submit',submitZoneCharges)
+await displayZoneFares()
+}
+
+async function updatePriceCappingDetails (e){
+  e.preventDefault()
+  console.log("etit clicked to update ")
+  let obj={
+    
+    capzoneA:  capzoneA.value,
+    capzoneB: capzoneB.value,
+    dailycapCharge: dailycapCharge.value,
+    weeklyCapCharge: weeklyCapCharge.value
+  }
+  let result=await axios.put(http+`/capdetails/${updateParamIdPriceCap}`,obj)
+  
+  capForm.removeEventListener('submit',updatePriceCappingDetails)
+  capForm.addEventListener('submit',submitCap)
+  
+  capzoneA.value=''
+  capzoneB.value=''
+  dailycapCharge.value=''
+  weeklyCapCharge.value=''
+
+  console.log(result)
+ displayCaps()
+}
+
+
+async function updatePeakHourTimings (e){
+  e.preventDefault()
+  console.log("chamging peak hours ")
+  let obj={ dayA:dayA.value,
+   dayB: dayB.value,
+   timeA: timeA.value,
+   timeB:timeB.value}
+let result=await axios.put(http+`/peakTimings/${updatePeakParamId}`,obj)
+console.log(result)
+PeaktimingForm.removeEventListener('submit',updatePeakHourTimings)
+PeaktimingForm.addEventListener('submit',submitPeaktimings)
+await displaypeaktimings()
+console.log("changed the timings")
 }

@@ -1,4 +1,4 @@
-const User= require('../models/users')
+const User= require( '../models/users')
 const DailyBooking=require('../models/dailybooking')
 const WeeklyBooking= require('../models/weeklyBooking')
 
