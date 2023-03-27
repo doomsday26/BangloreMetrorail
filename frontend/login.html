@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<link rel="stylesheet" href="login.css">
+<body>
+    <div id="main">
+        <div class="left container">
+            
+            <h1>Welcome to Bangalore Metro Services</h1>
+            <div id="imageContainer"> </div>
+        </div>
+        <div class="right container">
+<h2>Swipe your card, and enjoy your commute !!</h2>
+<form id="swipeForm">
+    <div id="emailDiv" class="inner">
+     <label for="email">EMAIL : </label>
+        <input type="text" name="email" id="email" placeholder="EMAIL">
+    </div>
+    <div id="cardDiv" class="inner">
+        <label for="cardNumber">CARD ID : </label>
+        <input type="text" name="cardNumber" id="cardNumber" placeholder="CARD Number">
+    </div>
+    <div id="dateDiv" class="inner">
+        <label for="date">date amd time</label>
+        <input type="date" name="date" id="loginDate" >
+    </div>
+<input type="submit"  name="login" id="loginbtn" value="SWIPE">
+</form>
+<p> Incase you are new member just login with your details.
+ Or, if you want to use metro service, go to sign in page, fill the details and get a new card at your door step
+</p>
+<br>
+<button id="signIN" ><a href="signUp.html"> GET YOUR SELF A NEW ID </a></button>
+<br>
+<br>
+<h4>Thank You</h4>
+<h4>Happy Journey</h4>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>

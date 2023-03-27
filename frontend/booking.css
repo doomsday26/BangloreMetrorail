@@ -1,0 +1,107 @@
+*{
+    margin:0;
+    padding: 0;
+}
+:root{
+    --brown:#c76b3c;
+}
+
+
+#main{
+    display: flex;
+    flex-direction: row;
+}
+
+.container{
+    width: 50vw;
+    height: 100vh;
+
+}
+.left{ background-color: black;
+    color: var(--brown);
+}
+.heading{
+    margin-top: 5vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    justify-content: center;
+    text-align: center;
+}
+#imageContainer{
+    background-image: url("https://www.deccanherald.com/sites/dh/files/articleimages/2022/03/25/download-6-1094589-1648209225.png");
+    width: 40vw;
+    height: 40vh;
+    margin: 20vh auto;
+    
+    background-size: cover;
+}  
+.right{
+    background-color: var(--brown);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+#bookingForm{
+    color: var(--brown);
+ border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    height: 40vh;
+    margin: 5vh auto;
+    background: black;
+}
+.inner{
+
+    padding: 2%;
+    display: flex;
+    justify-content: flex-start;
+}
+label{
+    margin-left: 0%;
+    width: 30%;
+}
+input,select{
+    
+    width: 100%;
+    margin-right: 0;
+}
+button{
+    background-color: black;
+    border: var(--brown);
+    width: 25%;
+    padding: 2%;
+    border-radius: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+a{color: var(--brown);
+    text-decoration: none;
+}
+#bookbtn{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+    font-weight: bold;
+    margin: 10% auto;
+    text-align: center;
+    background-color: var(--brown);
+    border: var(--brown);
+    height: 10%;
+    width: 50%;
+    border-radius: 5px;
+}
+
+#userDiv{
+    width: 40vw;
+ display: flex;
+ align-items: start;
+}
+#username{
+margin-left: 5vw;
+}
+#balance{
+    position:absolute;
+    right:1vw
+}
+#rs{
+    position:absolute;
+    right:3vw
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADMIN</title>
+  </head>
+  <link rel="stylesheet" href="admin.css" />
+  <body>
+    <div id="main">
+      <div class="left container">
+        <h1>BENGLURU METRO ADMIN PANEL</h1>
+        <br />
+        <div id="existingFares">
+          <h2>Zone Fares pricing Information</h2>
+            <ul id="fareul">
+            </ul>
+        </div>
+        <br>
+        <div id="priceCappingFares">
+          <h2> Price Capping Information</h2>
+            <ul id="capul">
+            </ul>
+        </div>
+        <br>
+        <div id="peakhours">
+          <h2>Day wise Peak Hours Timings</h2>
+          <ul id="peakul">
+            <!-- <li class="list">
+            <span>monday</span>
+            <span>to</span>
+            <span>friday</span>
+            <span>peak hour start</span>
+            <span>7:00</span>
+            <span>to</span>
+            <span>10:30</span>
+            <button>edit</button>
+            <button>delete</button>  
+            </li> -->
+          </ul>
+        </div>
+      </div>
+      <div class="right container">
+        <h2>configure and add zones</h2>
+        <h2>sensetive information, normal user is unauthourized</h2>
+        <br>
+        <h2>ZONE FARE INFORMATION</h2>
+        <form id="zoneForm" class="form">
+          <div class="inner">
+            <label for="zoneA">ENTER NEW ZONE : </label>
+            <input type="text" name="zoneA" id="zoneA" required />
+          </div>
+          <div class="inner">
+            <label for="zoneB">ENTER CONNECTIVE ZONE : </label>
+            <input type="text" name="zoneB" id="zoneB" required />
+          </div>
+
+          
+          <div class="inner">
+              <label for="normalCharge">ENTER NORMAL FARE CHARGES :</label>
+              <input
+              type="number"
+              name="normalCharge"
+              id="normalCharge"
+              required
+              />
+            </div>
+            <div class="inner">
+              <label for="peakCharge">ENTER PEAK HOUR FARE CHARGES : </label>
+              <input type="number" name="peakCharge" id="peakCharge" required />
+            </div>
+            <br />
+          <input type="submit" value="ENTER PRICING" id="submit" />
+        </form>
+<br>
+<h2>PRICE CAPPING INFORMATION </h2>
+<form id="capForm" class="form">
+  <div class="inner">
+    <label for="zoneA">ENTER  ZONE : </label>
+    <input type="text" name="zoneA" id="capzoneA" required />
+  </div>
+  <div class="inner">
+    <label for="zoneB">ENTER CONNECTIVE ZONE : </label>
+    <input type="text" name="zoneB" id="capzoneB" required />
+  </div>
+
+  
+  <div class="inner">
+      <label for="normalCharge">ENTER DAILY CAP  CHARGES :</label>
+      <input
+      type="number"
+      name="normalCharge"
+      id="dailycapCharge"
+      required
+      />
+    </div>
+    <div class="inner">
+      <label for="peakCharge">ENTER WEEKLY CAP CHARGES : </label>
+      <input type="number" name="peakCharge" id="weeklyCapCharge" required />
+    </div>
+    <br />
+  <input type="submit" value="ENTER CAPPING DETAILS" id="submit" />
+</form>
+<br>
+<h2>DAY WISE PEAK HOURS</h2>
+        <form id="timingForm" class="form">
+          <div class="inner">
+            <label for="dayA">ENTER start day : </label>
+            <select name="dayA" id="dayA" >
+              <option value="0" selected> select from here</option>
+                     <option value="1">Monday</option>
+                     <option value="2">Tuesday</option>
+                     <option value="3">Wednesday</option>
+                     <option value="4">Thursday</option>
+                     <option value="5">Friday</option>
+                     <option value="6">Saturday</option>
+                     <option value="7">Sunday</option>        
+                 </select>  
+          </div>
+          <div class="inner">
+            <label for="dayB">ENTER end day : </label>
+            <select name="dayB" id="dayB" >
+              <option value="0" selected> select from here</option>
+                     <option value="1">Monday</option>
+                     <option value="2">Tuesday</option>
+                     <option value="3">Wednesday</option>
+                     <option value="4">Thursday</option>
+                     <option value="5">Friday</option>
+                     <option value="6">Saturday</option>
+                     <option value="7">Sunday</option>        
+                 </select>  
+          </div>
+
+          
+          <div class="inner">
+              <label for="normalCharge">peak hour start :</label>
+              <input
+              type="time"
+              name="normalCharge"
+              id="timeA"
+              required
+              />
+            </div>
+            <div class="inner">
+              <label for="peakCharge">peak hour end : </label>
+              <input type="time" name="peakCharge" id="timeB" required />
+            </div>
+            <br />
+          <input type="submit" value="Add Timings" id="submit" />
+        </form>
+
+
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

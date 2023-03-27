@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking</title>
+  </head>
+  <link rel="stylesheet" href="booking.css" />
+  <body>
+    <div id="main">
+      <div class="left container">
+        <h1 class="heading">Welcome to Bangalore Metro Services</h1>
+        <h3 class="heading">BOOK YOUR METRO EASILY ON YOUR FINGER TIPS</h3>
+        <div id="imageContainer"></div>
+      </div>
+      <div class="right container">
+        <h2>SELECT BOARDING AND DESTINATION, THEN PAY YOUR CONVINENCE </h2>
+        <br>
+        <BR></BR>
+     
+        <form id="bookingForm">
+          <div id="emailDiv" class="inner">
+            <label for="time">TIME : </label>
+            <input type="time" name="time" id="time"  min="00:00:00" max="23:59:59" required/>
+          </div>
+          <div id="dateDiv" class="inner">
+            <label for="date">DATE : </label>
+            <input type="date" name="date" id="date" required/>
+          </div>
+          <div id="cardDiv" class="inner">
+            <label for="Ozone">ORIGIN ZONE : </label>
+            <select name="Ozone" id="Ozone" >
+              <option value="0" selected>select from here</option>
+              <option value="zone1">ZONE 1</option>
+              <option value="zone2">ZONE 2</option>
+            </select>
+          </div>
+
+          <div id="cardDiv" class="inner">
+            <label for="Dzone">DESTINATION ZONE : </label>
+            <select name="Dzone" id="Dzone">
+              <option value="0" selected>select from here</option>
+              <option value="zone1">ZONE 1</option>
+              <option value="zone2">ZONE 2</option>
+            </select>
+          </div>
+          <input type="submit" name="book" id="bookbtn" value="BOOK NOW" />
+        </form>
+
+        
+        <br />
+        <br />
+        <h4>Thank You</h4>
+        <h4>Happy Journey</h4>
+        <h4>click to go to traves page to see your old travels</h4>
+        <br>
+        <button><a href="travels.html">Your travels</a></button>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+    <script src="booking.js"></script>
+  </body>
+</html>

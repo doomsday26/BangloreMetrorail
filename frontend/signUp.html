@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<link rel="stylesheet" href="SignUp.css">
+<body>
+    <div id="main">
+        <div class="left container">
+            
+            <h1>Welcome to Bangalore Metro Services</h1>
+            <div id="imageContainer"> </div>
+        </div>
+        <div class="right container">
+<h2>Swipe so that we get your Your Card and Email details</h2>
+<form id="userForm">
+    <div id="emailDiv" class="inner">
+     <label for="email">EMAIL : </label>
+        <input type="text" name="email" id="email" placeholder="EMAIL" required>
+    </div>
+    <div id="namedDiv" class="inner">
+        <label for="namer">NAME: </label>
+        <input type="text" name="name" id="name" placeholder="Your Name" required>
+    </div>
+    <div id="selectDiv" class="inner">
+        <label for="selct_Package">SELECT PACKAGE </label>
+    <select name="selct_Package" id="cardPackage" required >
+ <option value="0" selected> select from here</option>
+        <option value="Regular">Regular Pass</option>
+        <option value="Daily">Daily pass rs 90</option>
+        <option value="Weekly">Weekly pass rs 630</option>
+        <option value="Monthly">Monthly pass rs 2700</option>
+    </select>    
+    </div>
+    
+<input type="submit"  name="login" id="loginbtn" value="SWIPE">
+</form>
+<br>
+<h4>Thank You</h4>
+<h4>Happy Journey</h4>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+    <script src="signUp.js"></script>
+</body>
+</html>
