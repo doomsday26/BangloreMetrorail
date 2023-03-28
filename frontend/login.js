@@ -1,6 +1,8 @@
 //here it is supposed that card details contains email and card number 
 //in which both are unique identifiers,
-
+window.addEventListener('DOMContentLoaded',()=>{
+    localStorage.clear()
+})
 let swipeform= document.getElementById("swipeForm")
 let email= document.getElementById('email')
 let cardNumber = document.getElementById('cardNumber')
@@ -31,10 +33,11 @@ alert(result.data.message)
 let userDetails={
     cardId:cardNumber.value
 }
+localStorage.setItem('userDetails',JSON.stringify(userDetails))
+localStorage.setItem('currentDate',JSON.stringify(loginDatevalue))
     loginDate.value=''
     email.value=''
     cardNumber.value=''
- localStorage.setItem('userDetails',JSON.stringify(userDetails))
     let a= document.createElement('a')
     a.href='./booking.html'
    a.click()

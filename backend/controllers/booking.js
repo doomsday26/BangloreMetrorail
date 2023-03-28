@@ -109,6 +109,7 @@ currentBookingfare= dailyCap-totalCurrentDayFare
 
 }else{
     //for same destination and origin
+    console.log("same zone travel zone is>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> "+ req.body.originZone +"at time "+ req.body.Time)
     //check if the expected fare is greater than the cap of that zone
     let capping = await Pricecap.findAll({
         where: {originZone: req.body.onboard,destinationZone: req.body.destination},attributes: {
@@ -183,4 +184,6 @@ if(prevWeeklyBookings.length>0){
 
     }
   }
+
+  res.status(200).json({success:true,  message:"journey booked you can now see your journy on daily bookings "})
 };

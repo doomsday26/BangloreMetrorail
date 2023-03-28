@@ -2,22 +2,20 @@ let displayUl = document.getElementById('displayUl')
 let displayUl2 = document.getElementById('displayUl2')
 let btn= document.getElementById('display')
 let date= document.getElementById('date')
-window.addEventListener('DOMContentLoaded',()=>{
-    displayWeeklyRides(10)
-   displayDailyRides(10,'2023-03-27')
+window.addEventListener('DOMContentLoaded',async()=>{
+
+let cardId= JSON.parse(localStorage.getItem('userDetails')).cardId
+
+let currDate= JSON.parse(localStorage.getItem('currentDate'))
+console.log(cardId)
+console.log(currDate)
+    displayWeeklyRides(cardId)
+   displayDailyRides(cardId,currDate)
 })
-// btn.addEventListener('click',()=>{
-//    console.log(date.value)
-//    console.log(typeof date.value)
-//    if(date.value.length==0){
-//     console.log("invalid date")
-//     alert("please enter date")
-//    }else{
-//     displayDailyRides(1,date.value)
-//    }
-// })
 
 async function displayDailyRides(id,date){
+    console.log(id)
+    console.log(date)
     let result=await axios.get(`http://localhost:3000/dailybookings/${id}/${date}`)
     //console.log(result.data)
 result.data.forEach(e=>createLi(e,displayUl))

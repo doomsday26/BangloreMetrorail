@@ -32,6 +32,9 @@ async function makeBooking(e){
         Ozone.selectedIndex=0;
         Dzone.selectedIndex=0
         //axios.post
+        if(result.success){
+            alert("you an now go to your travels to check your daily bookings")
+        }
     }
 
 }
